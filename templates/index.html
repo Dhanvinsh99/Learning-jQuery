@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Display</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function updateTime() {
+            $.ajax({
+                url: '/get_time',
+                type: 'GET',
+                success: function(data) {
+                    $('#human_readable_time').text(data.current_time);
+                    $('#epoch_time_ns').text(data.epoch_time_ns.toLocaleString());
+                    $('#time_bc_ns').text(data.time_bc_ns.toLocaleString());
+                }
+            });
+        }
+
+        updateTime();
+        setInterval(updateTime, 0.001)
+    </script>
+</head>
+<body>
+    <h1>Current Time Formats</h1>
+    <h4>Human-readable time: <span id="human_readable_time"></span></h4>
+    <h4>Time since epoch in nanoseconds: <span id="epoch_time_ns"></span></h4>
+    <h4>Time since 0 BC in nanoseconds: <span id="time_bc_ns"></span></h4>
+</body>
+</html>
