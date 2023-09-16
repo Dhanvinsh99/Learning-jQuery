@@ -11,7 +11,7 @@ def index():
 def get_time():
     current_time = time.ctime()
     epoch_time_ns = int(time.time_ns())
-    time_bc_ns = 62125920000000000 + time.time_ns()
+    time_bc_ns = 62167195440000000000 + time.time_ns()
     
     return jsonify({
         'current_time': current_time,
